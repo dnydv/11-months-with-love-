@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Happy 11th Month Anniversary to Chehek (Cherry 🍒)</title>
+<style>
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html, body {
+    height: 100%;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f9bec7, #ff7a8a, #ffd6bf);
+    overflow-x: hidden;
+    color: #fff;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+  /* Floating hearts canvas */
+  #hearts-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Subtle sparkles container */
+  #sparkles-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+  }
+  .sparkle {
+    position: absolute;
+    background: rgba(255,255,255,0.85);
+    border-radius: 50%;
+    filter: drop-shadow(0 0 6px rgba(255,192,203,0.7));
+    animation: sparkle-flicker 2.5s infinite ease-in-out;
+  }
+  @keyframes sparkle-flicker {
+    0%, 100% {opacity: 1; transform: scale(1);}
+    50% {opacity: 0.3; transform: scale(1.3);}
+  }
+
+  /* Container */
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 5rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Glass morph card */
+  .glass-card {
+    background: rgba(255 255 255 / 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1.5px solid rgba(255 182 193 / 0.3);
+    box-shadow: 0 8px 20px rgba(255 105 135 / 0.25);
+    padding: 1.6rem 1.8rem;
+    margin: 1.8rem 0;
+    color: #ffe5e6;
+    text-shadow: 0 0 8px rgba(255 105 135 / 0.6);
+  }
+
+  /* Hero Section */
+  #hero {
+    text-align: center;
+    margin-top: 3rem;
+    user-select: none;
+  }
+  #hero h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.15rem;
+    line-height: 1.15;
+    animation: fadeInDown 1s ease forwards;
+  }
+  #hero h2 {
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #ffccd0;
+    margin-bottom: 1.3rem;
+    min-height: 1.8em;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Typing effect container */
+  #hero h2 > span {
+    border-right: 2px solid #ffe6ea;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    animation: typing 4.4s steps(26) forwards, blinkCaret 1s step-end infinite;
+  }
+
+  /* Glowing pulsing heart */
+  #heart-glow {
+    display: inline-block;
+    font-size: 3rem;
+    margin: 0.7rem 0 2rem;
+    animation: heartbeat 1.6s infinite ease-in-out;
+    filter:
+      drop-shadow(0 0 6px #ff577f)
+      drop-shadow(0 0 15px #ff7a95);
+  }
+
+  /* Love Countdown Timer */
+  #countdown {
+    font-weight: 700;
+    font-size: 1.7rem;
+    letter-spacing: 0.06em;
+    color: #ff4e69;
+    text-shadow:
+      0 0 8px #ff7892,
+      0 0 20px #ff4763;
+    margin-bottom: 3rem;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  #countdown span {
+    background: rgba(255 105 135 / 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 14px;
+    padding: 0.5rem 1rem;
+    min-width: 63px;
+    box-shadow: 0 0 12px #ff4763;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: pulseGlow 2s infinite ease-in-out;
+  }
+  #countdown span small {
+    font-weight: 400;
+    font-size: 0.75rem;
+    margin-top: 0.15rem;
+    color: #ffd3dc;
+    text-shadow: none;
+  }
+
+  /* Timer zero message */
+  #countdown.complete {
+    font-size: 2rem;
+    color: #ff4463;
+    animation: heartbeat 1.5s infinite ease-in-out;
+    text-shadow:
+      0 0 20px #ff4060,
+      0 0 40px #ff2b48;
+  }
+
+  /* Animations */
+  @keyframes typing {
+    from {width: 0;}
+    to {width: 100%;}
+  }
+  @keyframes blinkCaret {
+    0%, 100% {border-color: transparent;}
+    50% {border-color: #ffe6ea;}
+  }
+  @keyframes heartbeat {
+    0%, 100% {transform: scale(1);}
+    50% {transform: scale(1.15);}
+  }
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow:
+        0 0 12px #ff4763,
+        0 0 20px #ff5481;
+      transform: scale(1);
+    }
+    50% {
+      box-shadow:
+        0 0 24px #ff2851,
+        0 0 42px #ff2c5e;
+      transform: scale(1.1);
+    }
+  }
+
+  /* Love Message Section */
+  #love-message p {
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: 500;
+    color: #ffe6ea;
+    letter-spacing: 0.02em;
+    min-height: 5rem;
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
+    animation-delay: 2.5s;
+    user-select: text;
+  }
+
+  /* Surprise Button */
+  #surprise-section {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+  #surprise-btn {
+    background: linear-gradient(135deg, #ff7093, #ff483e);
+    border: none;
+    padding: 1rem 2.4rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffe6ea;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow:
+      0 0 12px #ff7093,
+      0 0 20px #ff483e;
+    transition: all 0.3s ease;
+    user-select: none;
+    filter: drop-shadow(0 0 8px #ff6378);
+  }
+  #surprise-btn:hover, #surprise-btn:focus {
+    filter: drop-shadow(0 0 14px #ff3558);
+    transform: scale(1.08);
+    outline: none;
+  }
+
+  /* Open When cards container */
+  #cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1.3rem;
+    margin-top: 1rem;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.6s ease, max-height 0.8s ease;
+    user-select: text;
+  }
+  #cards-container.active {
+    opacity: 1;
+    max-height: 1200px;
+  }
+
+  /* Each card */
+  .card {
+    background: rgba(255 255 255 / 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 16px;
+    border: 1.5px solid rgba(255 182 193 / 0.3);
+    box-shadow: 0 5px 15px rgba(255 99 116 / 0.3);
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    color: #ffe6ea;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    text-align: center;
+    letter-spacing: 0.03em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    filter: drop-shadow(0 0 6px #ff7691);
+  }
+  .card:hover, .card:focus {
+    outline: none;
+    transform: translateY(-6px) scale(1.05);
+    box-shadow:
+      0 0 20px #ff465b,
+      0 10px 30px rgba(255 102 120 / 0.6);
+  }
+
+  /* Message popup container */
+  #popup-message {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: rgba(255 255 255 / 0.25);
+    backdrop-filter: blur(15px);
+    border-radius: 24px;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 1.8rem 2rem;
+    box-shadow:
+      0 15px 30px rgba(255 70 90 / 0.8);
+    color: #ffe6ea;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: left;
+    user-select: text;
+    z-index: 999;
+    transition: opacity 0.4s ease, transform 0.35s ease;
+    opacity: 0;
+    pointer-events: none;
+  }
+  #popup-message.visible {
+    pointer-events: auto;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  /* Close button inside popup */
+  #popup-close {
+    position: absolute;
+    top: 0.7rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: #fff0f2;
+    filter: drop-shadow(0 0 5px #ff5970);
+    transition: transform 0.25s ease;
+  }
+  #popup-close:hover, #popup-close:focus {
+    outline: none;
+    transform: scale(1.15);
+  }
+
+  /* Scroll reveal fade in */
+  .fade-reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  .fade-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Responsive text sizes for bigger screens */
+  @media (min-width: 400px) {
+    #hero h1 { font-size: 2.8rem; }
+    #hero h2 { font-size: 1.5rem; min-height: 2rem; }
+    #love-message p { font-size: 1.15rem; }
+    #surprise-btn { font-size: 1.25rem; padding: 1.1rem 2.8rem; }
+    .card { font-size: 1.1rem; }
+    #popup-message { font-size: 1.1rem; }
+    #heart-glow { font-size: 3.6rem; }
+    #countdown { font-size: 2rem; }
+  }
+  @media (min-width: 520px) {
+    .container { max-width: 580px;}
+  }
+
+  /* --- For You Section specific styles and floating hearts --- */
+  #for-you {
+    position: relative;
+    z-index: 15;
+  }
+  #for-you #for-you-text p {
+    margin-bottom: 0.9rem;
+    opacity: 0;
+    transition: opacity 1.4s ease;
+  }
+  #for-you #for-you-text p.visible {
+    opacity: 1;
+  }
+
+  /* Floating tiny hearts only inside For You section */
+  #for-you-hearts {
+    position: absolute;
+    top: 12px;
+    left: 5%;
+    width: 90%;
+    height: 150px;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 0;
+  }
+  .fy-heart {
+    position: absolute;
+    font-size: 14px;
+    opacity: 0.85;
+    filter: drop-shadow(0 0 3px #ff7b92);
+    will-change: transform, opacity;
+    user-select:none;
+    color: #ff7090;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+</style>
+</head>
+<body>
+
+<canvas id="hearts-canvas" aria-hidden="true"></canvas>
+<div id="sparkles-container" aria-hidden="true"></div>
+
+<div class="container" role="main">
+  <section id="hero" aria-label="Hero anniversary message">
+    <h1>Happy 11th Month Anniversary ❤️</h1>
+    <h2 aria-live="polite"><span>To My Cherry 🍒 (Chehek)</span></h2>
+    <div id="heart-glow" aria-hidden="true" title="Heart beating">❤️</div>
+    <div id="countdown" aria-label="Countdown to one year anniversary" role="timer" aria-live="polite" aria-atomic="true"></div>
+  </section>
+
+  <section id="love-message" class="fade-reveal" aria-label="Heartfelt love message">
+    <div class="glass-card">
+      <p>
+        Chehek, these last 11 months with you have filled my life with so much warmth, joy, and love. Your smile lights up my darkest days, and your presence is my greatest comfort. Thank you for being my Cherry, my sweetest love. Forever grateful to have you by my side.
+      </p>
+    </div>
+  </section>
+
+  <section id="for-you" aria-label="For You special emotional messages" class="fade-reveal">
+    <div class="glass-card" style="position:relative; overflow:hidden;">
+      <!-- Floating tiny hearts container -->
+      <div id="for-you-hearts" aria-hidden="true"></div>
+      <h3 style="text-align:center; font-weight:700; font-size:1.6rem; margin-bottom:1rem; color:#ffd3dc; 
+        text-shadow: 0 0 12px #ff759b, 0 0 26px #ff4885;">
+        For You ❤️
+      </h3>
+      <div id="for-you-text" aria-live="polite" style="color:#fff0f2; text-align:center; 
+        font-size:1.1rem; line-height:1.6; letter-spacing:0.02em; text-shadow:
+        0 0 6px #ff9bb1, 0 0 14px #ff7191;">
+        <!-- Lines will appear here by JS -->
+      </div>
+      <p id="for-you-footer" style="margin-top:1.8rem; font-size:0.95rem; font-weight:600; 
+        color:#ffb3c6; text-align:center; filter: drop-shadow(0 0 10px #ff5a77); opacity:0;">
+        You are my peace, my happiness, my everything 💖
+      </p>
+    </div>
+  </section>
+
+  <section id="surprise-section" aria-label="Surprise open when cards">
+    <button id="surprise-btn" aria-expanded="false" aria-controls="cards-container" aria-haspopup="true">
+      Click for Surprise 💌
+    </button>
+    <div id="cards-container" role="list" tabindex="0" aria-live="polite" aria-atomic="true">
+      <div tabindex="0" class="card" role="listitem" data-title="Open when you’re happy 😊" data-msg="Aaj tu khush hai na bas aise hi hamesha smile karti reh Teri smile sach me bohot achi lagti hai Pata nahi kyun par tujhe khush dekh ke mujhe bhi achha lagta hai">Open when you’re happy 😊</div>
+      <div tabindex="0" class="card" role="listitem" data-title="Open when you’re sad 💙" data-msg="Agar tu sad hai na toh please sab kuch andar mat rakh Sab theek ho jayega thoda time lagega bas Aur haan main hoon na tu akeli nahi hai">Open when you’re sad 💙</div>
+      <div tabindex="0" class="card" role="listitem" data-title="Open when you’re angry 😤" data-msg="Mujhe pata hai tu jaldi gussa ho jati hai 😅 Par thoda sa calm ho ja sab theek ho jayega Aur agar meri wajah se gussa hai toh sorry yaar sach me hurt karne ka intention kabhi nahi hota">Open when you’re angry 😤</div>
+      <div tabindex="0" class="card" role="listitem" data-title="Open when you miss me ❤️" data-msg="Agar tu mujhe miss kar rahi hai toh sach bolu main bhi kar raha hoon Tu jitna sochti hai na usse zyada tu important hai mere liye">Open when you miss me ❤️</div>
+      <div tabindex="0" class="card" role="listitem" data-title="Open when you feel alone 🌙" data-msg="Kabhi bhi aisa lage na ki tu akeli hai toh yaad rakh main hamesha tere saath hoon Chahe baat ho ya na ho par main hoon">Open when you feel alone 🌙</div>
+      <div tabindex="0" class="card" role="listitem" data-title="Open when you doubt yourself ✨" data-msg="Tu jitna sochti hai na usse kahi zyada strong aur amazing hai Khud pe thoda trust kar tu sab kar sakti hai">Open when you doubt yourself ✨</div>
+      <div tabindex="0" class="card" role="listitem" data-title="Open when you can't sleep 🌌" data-msg="Itna mat soch raat ko dimaag ko thoda rest de Aankh band kar aur relax kar Kal sab thoda better lagega">Open when you can’t sleep 🌌</div>
+      <div tabindex="0" class="card" role="listitem" data-title="Open when you need a smile 😊" data-msg="Abhi ke abhi smile kar haan wahi wali 😄 Tujhe haste hue dekhna best lagta hai mujhe">Open when you need a smile 😊</div>
+    </div>
+  </section>
+</div>
+
+<!-- Popup message -->
+<div id="popup-message" role="dialog" aria-modal="true" aria-labelledby="popup-title" aria-describedby="popup-desc" tabindex="-1">
+  <button id="popup-close" aria-label="Close message popup">&times;</button>
+  <h3 id="popup-title" style="margin-bottom:0.75rem;"></h3>
+  <p id="popup-desc" style="white-space: pre-line;"></p>
+</div>
+
+<footer aria-label="Footer" style="text-align:center; color:#ffd7dc; font-weight:600; user-select:none; filter: drop-shadow(0 0 6px #ff6a82); margin-bottom:1.5rem;">
+  Made with ❤️ for Cherry
+</footer>
+
+<script>
+  // Typed effect for hero subheading
+  (function typedHero(){
+    const el = document.querySelector('#hero h2 span');
+    const text = el.textContent;
+    el.textContent = "";
+    let i = 0;
+    const speed = 70;
+    function typing() {
+      if(i < text.length) {
+        el.textContent += text.charAt(i);
+        i++;
+        setTimeout(typing, speed);
+      }
+    }
+    typing();
+  })();
+
+  // Scroll reveal fade in effect
+  function scrollReveal() {
+    document.querySelectorAll('.fade-reveal').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if(rect.top < window.innerHeight * 0.85){
+        el.classList.add('revealed');
+      }
+    });
+  }
+  window.addEventListener('scroll', scrollReveal);
+  window.addEventListener('load', scrollReveal);
+
+  // Surprise button toggles open when cards
+  const surpriseBtn = document.getElementById('surprise-btn');
+  const cardsContainer = document.getElementById('cards-container');
+  surpriseBtn.addEventListener('click', () => {
+    const visible = cardsContainer.classList.toggle('active');
+    surpriseBtn.setAttribute('aria-expanded', visible.toString());
+    if(visible) {
+      cardsContainer.focus();
+      scrollReveal();
+    }
+  });
+
+  // Popup message controls
+  const popup = document.getElementById('popup-message');
+  const popupTitle = document.getElementById('popup-title');
+  const popupDesc = document.getElementById('popup-desc');
+  const popupClose = document.getElementById('popup-close');
+
+  function openPopup(title, msg) {
+    popupTitle.textContent = title;
+    popupDesc.textContent = msg;
+    popup.classList.add('visible');
+    popup.setAttribute('aria-hidden', 'false');
+    popup.focus();
+    document.body.style.overflow = 'hidden';
+  }
+  function closePopup() {
+    popup.classList.remove('visible');
+    popup.setAttribute('aria-hidden', 'true');
+    popupTitle.textContent = '';
+    popupDesc.textContent = '';
+    document.body.style.overflow = '';
+  }
+
+  cardsContainer.addEventListener('click', e => {
+    if(e.target.classList.contains('card')){
+      openPopup(e.target.dataset.title, e.target.dataset.msg);
+    }
+  });
+  cardsContainer.addEventListener('keydown', e => {
+    if(e.target.classList.contains('card') && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      openPopup(e.target.dataset.title, e.target.dataset.msg);
+    }
+  });
+
+  popupClose.addEventListener('click', closePopup);
+  popup.addEventListener('keydown', e => {
+    if(e.key === 'Escape') {
+      closePopup();
+    }
+  });
+  popup.addEventListener('click', e => {
+    if(e.target === popup) {
+      closePopup();
+    }
+  });
+  popup.addEventListener('keydown', e => {
+    if(e.key === 'Tab'){
+      const focusableElements = popup.querySelectorAll('button, [tabindex]:not([tabindex="-1"])');
+      const first = focusableElements[0];
+      const last = focusableElements[focusableElements.length -1];
+      if(e.shiftKey){
+        if(document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if(document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+  });
+
+  // Floating hearts animation on canvas
+  const canvas = document.getElementById('hearts-canvas');
+  const ctx = canvas.getContext('2d');
+  let W = window.innerWidth;
+  let H = window.innerHeight;
+  canvas.width = W;
+  canvas.height = H;
+
+  function drawHeart(ctx, x, y, size, opacity){
+    ctx.save();
+    ctx.beginPath();
+    ctx.translate(x,y);
+    ctx.scale(size,size);
+    ctx.moveTo(0, 0);
+    ctx.bezierCurveTo(0, -0.3, -0.5, -0.75, -1, -0.3);
+    ctx.bezierCurveTo(-1.5, 0.25, -0.5, 0.9, 0, 1.3);
+    ctx.bezierCurveTo(0.5, 0.9, 1.5, 0.25, 1, -0.3);
+    ctx.bezierCurveTo(0.5, -0.75, 0, -0.3, 0, 0);
+    ctx.closePath();
+    ctx.fillStyle = `rgba(255,105,135,${opacity})`;
+    ctx.shadowColor = `rgba(255,105,135,0.8)`;
+    ctx.shadowBlur = 8;
+    ctx.fill();
+    ctx.restore();
+  }
+
+  class Heart {
+    constructor(){
+      this.reset();
+    }
+    reset(){
+      this.x = Math.random() * W;
+      this.y = H + 20 + Math.random() * 50;
+      this.size = 5 + Math.random() * 10;
+      this.speed = 0.8 + Math.random() * 1.5;
+      this.opacity = 0.18 + Math.random() * 0.5;
+      this.swingSpeed = 0.02 + Math.random() * 0.04;
+      this.angle = Math.random() * Math.PI * 2;
+    }
+    update(){
+      this.y -= this.speed;
+      this.angle += this.swingSpeed;
+      this.x += Math.sin(this.angle) * 0.4;
+      if(this.y < -20){
+        this.reset();
+      }
+    }
+    draw(ctx){
+      drawHeart(ctx, this.x, this.y, this.size / 20, this.opacity);
+    }
+  }
+
+  const hearts = [];
+  const numHearts = 45;
+  for(let i=0; i<numHearts; i++){
+    hearts.push(new Heart());
+  }
+
+  function animateHearts(){
+    ctx.clearRect(0,0,W,H);
+    hearts.forEach(h => {
+      h.update();
+      h.draw(ctx);
+    });
+    requestAnimationFrame(animateHearts);
+  }
+  animateHearts();
+
+  window.addEventListener('resize', () => {
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = W;
+    canvas.height = H;
+  });
+
+  // Sparkles effect
+  const sparkleContainer = document.getElementById('sparkles-container');
+  function randomInt(min,max){return Math.floor(Math.random()*(max-min+1))+min;}
+
+  function createSparkle(){
+    const sparkle = document.createElement('div');
+    sparkle.classList.add('sparkle');
+    const size = randomInt(3,7);
+    sparkle.style.width = size + 'px';
+    sparkle.style.height = size + 'px';
+    sparkle.style.top = (Math.random()*100) + 'vh';
+    sparkle.style.left = (Math.random()*100) + 'vw';
+    sparkle.style.animationDuration = (2+Math.random()*2)+'s';
+    sparkle.style.animationDelay = (Math.random()*5)+'s';
+    sparkleContainer.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 7000);
+  }
+  setInterval(createSparkle, 300);
+
+  // Love countdown timer code
+  const countdownEl = document.getElementById('countdown');
+
+  // Set your anniversary start date (YYYY-MM-DD) — adjust if needed.
+  const anniversaryStart = new Date("2023-08-01T00:00:00");
+
+  const oneYearLater = new Date(anniversaryStart);
+  oneYearLater.setFullYear(oneYearLater.getFullYear() + 1);
+
+  function pad(num){
+    return num < 10 ? "0" + num : num;
+  }
+
+  function updateCountdown(){
+    const now = new Date();
+    let diff = oneYearLater - now;
+
+    if(diff <= 0){
+      countdownEl.classList.add("complete");
+      countdownEl.textContent = "Forever & Always ❤️";
+      clearInterval(timerInterval);
+      return;
+    } else {
+      countdownEl.classList.remove("complete");
+    }
+
+    const days = Math.floor(diff / (1000*60*60*24));
+    diff -= days*(1000*60*60*24);
+    const hours = Math.floor(diff / (1000*60*60));
+    diff -= hours*(1000*60*60);
+    const minutes = Math.floor(diff / (1000*60));
+    diff -= minutes*(1000*60);
+    const seconds = Math.floor(diff / 1000);
+
+    countdownEl.innerHTML =
+      `<span aria-label="${days} days"><strong>${pad(days)}</strong><small>Days</small></span>` +
+      `<span aria-label="${hours} hours"><strong>${pad(hours)}</strong><small>Hours</small></span>` +
+      `<span aria-label="${minutes} minutes"><strong>${pad(minutes)}</strong><small>Minutes</small></span>` +
+      `<span aria-label="${seconds} seconds"><strong>${pad(seconds)}</strong><small>Seconds</small></span>`;
+  }
+  updateCountdown();
+  const timerInterval = setInterval(updateCountdown, 1000);
+
+  // --- For You Section Animated Lines ---
+  const forYouLines = [
+    "I may not always be perfect, but I will always be there for you ❤️",
+    "No matter what happens, I’m always on your side 🤍",
+    "Your happiness matters to me more than anything",
+    "Even in your worst days, I’ll stay with you",
+    "You’re not alone, not now, not ever",
+    "I promise to stand by you, always"
+  ];
+
+  const fyContainer = document.getElementById('for-you-text');
+  const fyFooter = document.getElementById('for-you-footer');
+
+  async function showLines(lines){
+    fyContainer.textContent = "";
+    for(let i=0; i<lines.length; i++){
+      const lineElem = document.createElement('p');
+      lineElem.textContent = lines[i];
+      lineElem.style.opacity = "0";
+      lineElem.style.transition = "opacity 1.4s ease";
+      lineElem.style.marginBottom = "0.9rem";
+      fyContainer.appendChild(lineElem);
+      await new Promise(r => requestAnimationFrame(r));
+      await new Promise(r => setTimeout(r, 50));
+      lineElem.style.opacity = "1";
+      await new Promise(r => setTimeout(r, 2500));
+    }
+    fyFooter.style.transition = "opacity 2s ease";
+    fyFooter.style.opacity = "1";
+  }
+  window.addEventListener('load', () => {
+    showLines(forYouLines);
+  });
+
+  // Floating tiny hearts inside the For You section
+  const fyHeartsContainer = document.getElementById('for-you-hearts');
+
+  function createTinyHeart(){
+    const heart = document.createElement('div');
+    heart.textContent = '❤️';
+    heart.className = 'fy-heart';
+    heart.style.left = (Math.random() * 90) + '%';
+    heart.style.bottom = '0px';
+    const size = 12 + Math.random()*10;
+    heart.style.fontSize = size + 'px';
+    const animDuration = 7000 + Math.random()*5000;
+    heart.style.animationDuration = animDuration + 'ms';
+    heart.style.animationDelay = (-Math.random()*animDuration) + 'ms';
+
+    let start = null;
+    const distance = 120 + Math.random()*100;
+    function animateHeart(timestamp){
+      if(!start) start = timestamp;
+      const elapsed = timestamp - start;
+      const progress = elapsed / animDuration;
+      if(progress > 1){
+        fyHeartsContainer.removeChild(heart);
+        createTinyHeart();
+        return;
+      }
+      heart.style.bottom = (distance * progress) + 'px';
+      heart.style.opacity = 1 - progress;
+      requestAnimationFrame(animateHeart);
+    }
+    fyHeartsContainer.appendChild(heart);
+    requestAnimationFrame(animateHeart);
+  }
+  for(let i=0; i<14; i++){
+    setTimeout(createTinyHeart, i * 500);
+  }
+  setInterval(createTinyHeart, 3500);
+</script>
+
+</body>
+</html>
